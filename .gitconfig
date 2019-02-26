@@ -1,0 +1,35 @@
+[commit]
+	template = ~/.gitmessage
+
+[diff]
+	renames = copies
+	tool = meld
+	renamelimit = 1591
+[difftool]
+	prompt = false
+[color]
+	status = auto
+	branch = auto
+[alias]
+	logd = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci)%Creset' --abbrev-commit
+	logp = log --pretty=format:'%h %s' --abbrev-commit
+	amend = commit --amend --no-edit
+  	st = status
+  	tlog = log --pretty='%Cred%h %Cblue%ar %Cgreen%an%Creset %s'
+  	prune-repo = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D #"
+  	search = "!git log --grep=$1 $2 #"
+  	tsearch = "!git log --pretty='%Cred%h %Cblue%ar %Cgreen%an%Creset %s' --grep=$1 $2 #"
+  	fetch-pr = "!git fetch origin refs/pull-requests/$1/from:$2 #"
+	tree = log --decorate --oneline --graph --all --topo-order -30
+	pr  = "!f() { git fetch ${2:-origin} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; } ; f"
+	pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+[core]
+	excludesfile = /usr/lib/mcom-elx-env/gitignore_global
+	commentchar = -
+	editor = vim
+[merge]
+	tool = meld
+[user]
+	name = Jesper Hallborg
+	email = jesper.hallis@gmail.com
