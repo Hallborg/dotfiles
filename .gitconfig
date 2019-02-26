@@ -17,6 +17,7 @@
   	st = status
   	tlog = log --pretty='%Cred%h %Cblue%ar %Cgreen%an%Creset %s'
   	prune-repo = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D #"
+	list-files= diff-tree --no-commit-id --name-only -r HEAD
   	search = "!git log --grep=$1 $2 #"
   	tsearch = "!git log --pretty='%Cred%h %Cblue%ar %Cgreen%an%Creset %s' --grep=$1 $2 #"
   	fetch-pr = "!git fetch origin refs/pull-requests/$1/from:$2 #"
