@@ -96,6 +96,7 @@ bindkey \^u backward-kill-line
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias todo="vim ~/Documents/todo"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/ehaljes/.sdkman"
