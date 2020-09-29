@@ -24,6 +24,8 @@
 	tree = log --decorate --oneline --graph --all --topo-order -30
 	pr  = "!f() { git fetch ${2:-origin} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; } ; f"
 	pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+	force = push --force-with-lease
+        alias = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | awk '{print $1}'"
 
 [core]
 	excludesfile = /usr/lib/mcom-elx-env/gitignore_global
