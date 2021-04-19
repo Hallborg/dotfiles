@@ -31,6 +31,13 @@
 	excludesfile = /usr/lib/mcom-elx-env/gitignore_global
 	commentchar = -
 	editor = vim
+	pager = delta
+[delta]
+    features = side-by-side
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
 [merge]
 	tool = meld
 [user]
