@@ -103,6 +103,21 @@ bindkey \^u backward-kill-line
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias todo="vim ~/Documents/todo"
 
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/ehaljes/.sdkman"
 [[ -s "/home/ehaljes/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ehaljes/.sdkman/bin/sdkman-init.sh"
